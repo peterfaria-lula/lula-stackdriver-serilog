@@ -1,3 +1,4 @@
+// Copyright 2023 Lula Technologies, Inc
 // Copyright 2019 Redbox Automated Retail LLC
 // Copyright 2018 Mehdi El Gueddari
 //
@@ -19,7 +20,7 @@
 using System.IO;
 using System.Text;
 
-namespace Redbox.Serilog.Stackdriver
+namespace Lula.Serilog
 {
     /// <summary>
     /// Custom minimal text writer that will pass-through to a provided text writer but whilst doing so will

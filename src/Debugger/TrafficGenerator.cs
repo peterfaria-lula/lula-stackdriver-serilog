@@ -9,7 +9,7 @@ namespace Debugger
 {
     public class TrafficGenerator : IHostedService, IDisposable
     {
-        private ILogger<TrafficGenerator> _logger;
+        private readonly ILogger<TrafficGenerator> _logger;
         private Timer _timer;
         private int _executionCount = 0;
 
@@ -20,7 +20,7 @@ namespace Debugger
 
         public Task StartAsync(CancellationToken stoppingToken)
         {
-            _logger.LogInformation("TrafficGenerator Service running.");
+            _logger.LogInformation("TrafficGenerator Service running");
 
             _timer = new Timer(DoWork, null, TimeSpan.Zero,
                 TimeSpan.FromSeconds(5));
@@ -31,7 +31,7 @@ namespace Debugger
         private void DoWork(object state)
         {
             _executionCount++;
-            _logger.LogInformation($"TrafficGenerator Service is working. Count: {_executionCount}");
+            _logger.LogInformation("TrafficGenerator Service is working. Count: {ExecutionCount}", _executionCount);
             // Generate some ASP traffic, which will generate some logs
             try
             {
@@ -46,7 +46,7 @@ namespace Debugger
 
         public Task StopAsync(CancellationToken stoppingToken)
         {
-            _logger.LogInformation("TrafficGenerator Service is stopping.");
+            _logger.LogInformation("TrafficGenerator Service is stopping");
 
             _timer?.Change(Timeout.Infinite, 0);
 
@@ -55,6 +55,7 @@ namespace Debugger
 
         public void Dispose()
         {
+            GC.SuppressFinalize(this);
             _timer?.Dispose();
         }
     }

@@ -1,3 +1,4 @@
+// Copyright 2023 Lula Technologies, Inc
 // Copyright 2019 Redbox Automated Retail LLC
 // Copyright 2018 Mehdi El Gueddari
 //
@@ -18,7 +19,7 @@
 
 using Serilog.Events;
 
-namespace Redbox.Serilog.Stackdriver
+namespace Lula.Serilog
 {
     /// <summary>
     /// Mappings of Microsoft/Serilog Log Levels to Stackdriver

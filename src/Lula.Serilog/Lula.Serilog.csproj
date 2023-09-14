@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <PackageId>Lula.Serilog</PackageId>
+    <Authors>Lula</Authors>
+    <Description>A Serilog Formatter using JSON logs</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright 2023 (c) Lula Technologies, Inc</Copyright>
+    <PackageTags>serilog json log logging google</PackageTags>
+    <RepositoryUrl>https://github.com/Lula-Technologies-Inc/Lula.Serilog.git</RepositoryUrl> 
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RootNamespace>Lula.Serilog</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="3.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+    <PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
+  </ItemGroup>
+
+
+
+</Project>

@@ -1,3 +1,4 @@
+// Copyright 2023 Lula Technologies, Inc
 // Copyright 2019 Redbox Automated Retail LLC
 // Copyright 2018 Mehdi El Gueddari
 // Copyright 2016 Serilog Contributors
@@ -24,16 +25,16 @@ using Serilog.Formatting.Compact;
 using Serilog.Formatting.Json;
 using Serilog.Formatting;
 using Serilog.Parsing;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Redbox.Serilog.Stackdriver
+using System.Collections.Generic;
+
+namespace Lula.Serilog
 {
     /// <summary>
     /// Custom JSON formatter based on the built-in RenderedCompactJsonFormatter 
     /// but using property names that allow seemless integration with Stackdriver.
     /// </summary>
-    public class StackdriverJsonFormatter : ITextFormatter
+    public class PrettyJsonFormatter : ITextFormatter
     {
         // 256kb apparently, but we're conservative (https://cloud.google.com/logging/quotas)
         private static readonly int STACKDRIVER_ENTRY_LIMIT_BYTES = 200 * 1024; // 258kb, reduced to 200kb
@@ -42,7 +43,7 @@ namespace Redbox.Serilog.Stackdriver
         private readonly bool _includeMessageTemplate;
         private readonly JsonValueFormatter _valueFormatter;
 
-        public StackdriverJsonFormatter(bool checkForPayloadLimit = true, 
+        public PrettyJsonFormatter(bool checkForPayloadLimit = true, 
             bool includeMessageTemplate = true,
             JsonValueFormatter valueFormatter = null)
         {
@@ -58,7 +59,7 @@ namespace Redbox.Serilog.Stackdriver
         /// <param name="output">The output.</param>
         public void Format(LogEvent logEvent, TextWriter output)
         {
-            FormatEvent(logEvent, output, _valueFormatter);
+            this.FormatEvent(logEvent, output, _valueFormatter);
         }
 
         /// <summary>
